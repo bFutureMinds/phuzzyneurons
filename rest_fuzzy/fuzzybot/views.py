@@ -6,22 +6,10 @@ from rest_framework.views import APIView
 from rest_framework.renderers import JSONRenderer
 import logging
 
+from services import getBot
 
-chatterbot = ChatBot(
-    'Example ChatterBot',
-    io_adapter="chatterbot.adapters.io.JsonAdapter"
-)
 
-chatterbot.set_trainer(ListTrainer)
-chatterbot.train([
-    "Hi",
-    "Hello",
-    "How are you?",
-    "I am good.",
-    "That is good to hear.",
-    "Thank you",
-    "You are welcome.",
-])
+chatterbot = getBot()
 
 logger = logging.getLogger(__name__)
 class ChatterBotView(View):
