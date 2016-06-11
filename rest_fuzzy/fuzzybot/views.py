@@ -3,6 +3,7 @@ from django.views.generic import View
 from django.http import JsonResponse
 from chatterbot import ChatBot
 from rest_framework.views import APIView
+from rest_framework.renderers import JSONRenderer
 import logging
 
 
@@ -30,14 +31,18 @@ class ChatterBotView(View):
             'detail': 'You should make a POST request to this endpoint.'
         }
 
+        response_data = chatterbot.get_response("Hi")
+
         # Return a method not allowed response
-        return JsonResponse(data, status=405)
+        return JsonResponse({"response": response_data}, status=405, safe=False)
 
     def post(self, request, *args, **kwargs):
 
         logger.info("entered the method post")
+
         input_statement = request.POST.get('text')
 
         response_data = chatterbot.get_response(input_statement)
 
-        return JsonResponse(response_data)
+        logger.error(response_data)
+        return JsonResponse(JSONRenderer().render(response_data),safe=False)
