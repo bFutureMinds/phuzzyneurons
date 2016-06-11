@@ -26,16 +26,6 @@ chatterbot.train([
 logger = logging.getLogger(__name__)
 class ChatterBotView(View):
 
-    def get(self, request, *args, **kwargs):
-        data = {
-            'detail': 'You should make a POST request to this endpoint.'
-        }
-
-        response_data = chatterbot.get_response("Hi")
-
-        # Return a method not allowed response
-        return JsonResponse({"response": response_data}, status=405, safe=False)
-
     def post(self, request, *args, **kwargs):
 
         logger.info("entered the method post")
@@ -45,4 +35,4 @@ class ChatterBotView(View):
         response_data = chatterbot.get_response(input_statement)
 
         logger.error(response_data)
-        return JsonResponse(JSONRenderer().render(response_data),safe=False)
+        return JsonResponse(JSONRenderer().render(response_data.text),safe=False)
