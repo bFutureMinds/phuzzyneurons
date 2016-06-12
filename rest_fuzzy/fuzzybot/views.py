@@ -4,8 +4,10 @@ from rest_framework.renderers import JSONRenderer
 import logging
 import unicodedata as ud
 import rest_fuzzy.wordsfilter as wf
+import json
 
 from services import getBot
+
 
 chatterbot = getBot()
 
@@ -21,3 +23,10 @@ class ChatterBotView(View):
         response_data = chatterbot.get_response(ud.normalize('NFKD', input_statement).encode('ascii','ignore'))
         return JsonResponse(JSONRenderer().render(response_data.text),safe=False)
 
+
+
+    def put(self, request, *args, **kwargs):
+        json_data = json.loads(request.body)
+        response_data = chatterbot.get_response(json_data["question"])
+        map = { "answer" : response_data.text}
+        return JsonResponse(map)
