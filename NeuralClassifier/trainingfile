@@ -1,0 +1,10 @@
+this is payment question:PAY
+this is not payment question:OTH
+this is login question:LGN
+this question is about login:LGN
+payment quey:PAY
+why payment:PAY
+not a payment or login:OTH
+this is what i don't now: OTH
+login issue:LGN
+login failure:LGN

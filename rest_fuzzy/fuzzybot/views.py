@@ -7,8 +7,10 @@ import rest_fuzzy.wordsfilter as wf
 import services as s
 import os
 from rest_fuzzy.settings import BASE_DIR
+import json
 
 from services import getBot
+
 
 chatterbot = getBot()
 
@@ -24,15 +26,23 @@ class ChatterBotView(View):
         response_data = chatterbot.get_response(ud.normalize('NFKD', input_statement).encode('ascii','ignore'))
         return JsonResponse(JSONRenderer().render(response_data.text),safe=False)
 
+
+    def put(self, request, *args, **kwargs):
+        json_data = json.loads(request.body)
+        response_data = chatterbot.get_response(json_data["question"])
+        map = { "answer" : response_data.text}
+        return JsonResponse(map)
+
 class TrainBot(View):
 
-    def post(self,request,*args,**kwargs):
-        input_statement = request.POST.get('text')
-        with open(os.path.join(BASE_DIR, 'train')) as file:
-            content = file.readlines()
-        conversation =[]
-        for line in content:
-            for con in line.split(","):
-                conversation.append(con.rstrip())
-            s.getBot().train(conversation)
-        return JsonResponse(JSONRenderer().render("Bot trained with the given input"),safe=False)
+        def post(self, request, *args, **kwargs):
+            input_statement = request.POST.get('text')
+            with open(os.path.join(BASE_DIR, 'train')) as file:
+                content = file.readlines()
+            conversation = []
+            for line in content:
+                for con in line.split(","):
+                    conversation.append(con.rstrip())
+                s.getBot().train(conversation)
+            return JsonResponse(JSONRenderer().render("Bot trained with the given input"), safe=False)
+

@@ -22,4 +22,5 @@ from fuzzybot.views import ChatterBotView
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^chatterbot/',views.ChatterBotView.as_view()),
+    url(r'^trainbot/',views.TrainBot.as_view()),
 ]
