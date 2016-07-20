@@ -9,51 +9,31 @@ def getBot():
         database='chatterbot-database',
         logic_adapters=[
         "chatterbot.adapters.logic.ClosestMatchAdapter",
-        ]
+        ],
+        read_only=True,
     )
     chatterbot.set_trainer(ListTrainer)
 
-
     dataList = [
-         [
-            "My transaction is failing",
-            "Can you please try again?",
-            "Failed again",
-            "I will transfer you to the help desk",
-            "Please, Thank You"
-            "You are welcome"
-        ],[
-            "My transaction is failing",
-            "Can you please try again?",
-            "Tried again but no luck",
-            "I will transfer you to the help desk",
-            "ok"
-        ],[
-            "My transaction is failing",
-            "Can you please try again?",
-            "Tried many times",
-            "I will transfer you to the help desk",
-            "ok"
-        ],[
-            "My transaction is failing",
-            "Can you please try again?",
-            "Tried same result",
-            "I will transfer you to the help desk",
-            "ok"
-        ],[
-           "My transaction failed",
-           "Can you please try again?",
-           "Tried but same result",
-           "I will transfer you to the help desk",
-           "ok"
-        ],[
+        ["Hi",
+         "Hello",
+         "Hello",
+         "Hello",
+         "Hello",
+         "hi",
+         "How are you?",
+         "I am good.",
+         "That is good to hear.",
+         "Thank you",
+         "You are welcome.",
+         ], [
             'The credit limit was exceeded',
             'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
         ], [
             'Card limit has exceeded',
             'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
         ], [
-            'This transaction cannot be processed you creadit card limit was exceeded',
+            'This transaction cannot be processsedas you creadit card limit was exceeded',
             'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
         ], [
             'Payment Failure. Credit limit exhausted',
@@ -70,58 +50,31 @@ def getBot():
         ], [
             'Transaction is failing with message my credit limit exceeded',
             'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'My card limit exceeded what can I do',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Transaction can not processed exceeded limit',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Failure exceeded card limit',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'While trying to make a payment I see a message my Credit limit has exhusted',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
         ], [
-            'I cannot complete my transaction. My credit limit has exceeded.Please help',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
+            'The card had expired',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
         ], [
-            'Transaction is failing with message my credit limit exceeded',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'My credit limit exceeded what can I do',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Failure exceeded credit limit',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Frustrated credit limit exceeded',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Getting message credit limit over, can you help',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'My credit limit exhausted what can I do',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Failure exhausted credit limit',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Frustrated credit limit exhausted',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Transaction unsuccessfull limit over, can you help',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Transaction unsuccessfull limit exhausted',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'Unable to use card limit exhausted',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
-            'This transaction cannot be processed limit exhausted',
-            'Your Credit limit has exceeded. Kindly make the payment for your card befor initiation any more transaction on the same card.'
-        ],[
+            'My card has expired.Please suggest',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'Cannot make payment with my card. Its expired.',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'Card expired!',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'I cannot carry out any transaction.My card has expired',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'I am getting  messagemy card has expired',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'Transaction is failing with messagemy credit has expired.',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
+            'Credit card expired.How can i renew it?',
+            'Your card has expired.You need to renew your card details.Please follow the below link for renewal process:www.barclayscardus.com'
+        ], [
             'How can I pay my bills online?',
             'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
         ], [
@@ -146,33 +99,6 @@ def getBot():
             'I want to make a online payment of my bills. How can i do that?',
             'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
         ], [
-            'Can i pay my bill online',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Online utility bill pay',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Pay Online services bill',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Pay Online services bill',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'How can One pay bill online',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Error while paying online bill',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Facing online bill pay issue, what can i do',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'How can i make my bill payment online using website',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
-            'Website online payment issue, please can you help',
-            'To pay your credit card bill online log in to your account and select MAKE A PAYMENT. You may choose to make a single payment or sign up for automatic repeat monthly payments.'
-        ],[
             'What variety of options do I have to make a payment?',
             'You can make a payment online through the Barclaycard Mobile App by phone at 302-622-8990  or by mail to either of the following address: Card Services P.O. Box 13337 Philadelphia PA...'
         ], [
@@ -220,7 +146,7 @@ def getBot():
         ], [
             'Time require to process a online bill payment?',
             'Want to know when your online mobile or phone payment will be processed and when your available credit will be updated? Find out fast with this handy link.'
-        ],[
+        ], [
             'What is my minimum payment amount?',
             'Your minimum payment is the payment thats required each billing period to keep your Credit Card account in good standing. Your monthly billing statement will tell you the minimum payment amount...'
         ], [
@@ -268,7 +194,31 @@ def getBot():
         ], [
             'Can you tell me how many times is it allowed to change the payment due date?',
             'You can change your payment due date once every 120 days.'
-        ],  [
+        ], [
+            'How can I change my payment due date?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'I want to change my payment due date?Can you help?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'Whats the procedure to change the payment due date?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'Way to change payment due date?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'I want to change my payment due date? How can i do this?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'Is there a way I can change my payment due date?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'Help with the process of changing the payment due date',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
+            'Guide me through the process of changing the payment due date?',
+            'You can change your payment due date by clicking on Change Payment Due Date under Account Settings. Note: Changing your payment due date will not affect any payments currently due. Please continue to'
+        ], [
             'What if I need to make a payment and the website is down or unavailable?',
             'If you need to make a payment during a time when our website and/or Barclaycard Mobile App are down please call 302-622-8990 to make a payment.'
         ], [
@@ -316,26 +266,40 @@ def getBot():
         ], [
             'Is it possible to make payment using different bank accounts on your site?',
             'Yes. You can add multiple bank accounts to use to make payments on your account.'
-        ],[
-            'Thank You',
-            '',
-        ],[
-            'Thanks',
-            '',
-        ],[
-            'Ok',
-            '',
-        ],[
-            'Got it',
-            '',
-        ],[
-            'Good',
-            '',
-        ],[
-            'I am good',
-            '',
+        ],
+        [
+            'What is my balance',
+            'Your balance is {balance}',
+        ]
+        ,
+        [
+            'Can you tell me my balance',
+            'Your balance is {balance}',
+        ]
+        ,
+        [
+            'Please tell me my account balance',
+            'Your balance is {balance}',
+        ]
+        ,
+        [
+            'What is my account balance',
+            'Your balance is {balance}',
+        ],
+        [
+            'What is my account balance',
+            'Your balance is {balance}',
+        ],
+        [
+            'What is my balance',
+            'Your balance is {balance}',
+        ],
+        [
+            'Tell me my balance',
+            'Your balance is {balance}',
         ]
     ]
+
     for data in dataList:
         chatterbot.train(data)
     return chatterbot

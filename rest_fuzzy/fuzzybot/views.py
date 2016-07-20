@@ -6,6 +6,7 @@ import unicodedata as ud
 import rest_fuzzy.wordsfilter as wf
 import services as s
 import os
+import rest_fuzzy.responsefilter as rf
 from rest_fuzzy.settings import BASE_DIR
 import json
 
@@ -24,7 +25,9 @@ class ChatterBotView(View):
         input_statement = request.POST.get('text')
         input_statement = wf.filterString(input_statement)
         response_data = chatterbot.get_response(ud.normalize('NFKD', input_statement).encode('ascii','ignore'))
-        return JsonResponse(JSONRenderer().render(response_data.text),safe=False)
+        response_data = rf.filterresponse(str(response_data))
+
+        return JsonResponse(JSONRenderer().render(response_data),safe=False)
 
 
     def put(self, request, *args, **kwargs):
